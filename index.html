@@ -557,6 +557,9 @@ html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
 @keyframes floatySoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 .core h1{animation:floatySoft 8.5s ease-in-out infinite}
 body.open .core h1{animation-play-state:paused}
+
+/* 手机端：名字下的横线不要拉过两侧按钮 */
+html.is-mobile .core h1:after{width:104px !important;margin-left:auto !important;margin-right:auto !important}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵怡鹏的作品集">
@@ -898,4 +901,20 @@ if (location.search.indexOf('awake') > -1) wake();
     var f=p.querySelector('.fcard'); if(f) f.classList.add('hero');
   });
 });</script>
+
+<script>/* 名字微浮：JS 驱动，任何环境下都生效；进入面板即停住 */
+(function(){
+  var el=document.querySelector('#name'); if(!el) return;
+  if(!window.requestAnimationFrame) return;
+  var t0=null, AMP=5, PERIOD=8500;
+  function tick(now){
+    if(t0===null) t0=now;
+    if(!document.body.classList.contains('open')){
+      var p=(now-t0)/PERIOD*Math.PI*2;
+      el.style.setProperty('transform','translateY('+(Math.sin(p)*AMP).toFixed(2)+'px)','important');
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();</script>
 </body></html>
