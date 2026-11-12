@@ -552,6 +552,11 @@ html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
     display:flex;justify-content:space-between;align-items:center}
   html.is-mobile .meta span{white-space:nowrap}
   html.is-mobile .tclock{font-size:9px !important;letter-spacing:.1em !important;bottom:16px !important}
+
+/* ===== 名字微浮：封面未进入面板时低速轻浮（±5px / 8.5s），进面板后停住 ===== */
+@keyframes floatySoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.core h1{animation:floatySoft 8.5s ease-in-out infinite}
+body.open .core h1{animation-play-state:paused}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵怡鹏的作品集">
