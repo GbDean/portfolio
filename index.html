@@ -538,6 +538,15 @@ html.is-mobile .flow .fc .cap{opacity:1 !important;position:static !important;tr
 html.is-mobile .icons{flex-direction:column !important;flex-wrap:nowrap !important;gap:56px !important;
          padding:0;align-items:center !important;justify-content:center !important}
 html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
+
+/* ===== 窄桌面（电脑微信内置浏览器常见 640–900px）：作品四卡两列，避免单列被切 ===== */
+@media (max-width:900px) and (min-width:641px){
+  html.is-desktop .cats{grid-template-columns:repeat(2,1fr) !important;align-content:center !important;overflow:visible !important}
+  html.is-desktop .cat{padding:13px 16px !important}
+  html.is-desktop .cat h3{font-size:18px !important;margin:6px 0 4px !important}
+  html.is-desktop .cat p{font-size:10.5px !important;line-height:1.55 !important}
+  html.is-desktop .cat .thumbs img{width:48px !important;height:29px !important}
+}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵怡鹏的作品集">
@@ -549,11 +558,17 @@ html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="赵怡鹏的作品集">
 <meta name="twitter:image" content="https://gbdean.github.io/portfolio/og.jpg">
-<script>/* 设备判定：手机（含横屏、微信内置浏览器）走手机版布局 */
-(function(){var ua=navigator.userAgent||'',t=(navigator.maxTouchPoints||0)>1,
-sw=Math.min(screen.width,screen.height),
-mob=/iPhone|iPod|Android|Windows Phone|MicroMessenger|HarmonyOS/i.test(ua)||(t&&sw<=820);
-document.documentElement.className+=(mob?' is-mobile':' is-desktop');})();</script>
+<script>/* 设备判定 v2：只认手机/平板的 UA 特征；电脑版微信(WindowsWechat/MacWechat)一律走桌面版 */
+(function(){
+  var ua = navigator.userAgent || '';
+  var phone = /iPhone|iPod|Android|Windows Phone|HarmonyOS|OpenHarmony/i.test(ua);
+  var ipad  = /iPad/i.test(ua) || (/Macintosh/i.test(ua) && (navigator.maxTouchPoints||0) > 1);
+  var pcWx  = /WindowsWechat|MacWechat/i.test(ua);            /* 电脑版微信内置浏览器 */
+  var mob   = (phone || ipad) && !pcWx;
+  var q     = (location.search.match(/[?&]v=(m|d)/i) || [])[1];
+  if (q) mob = (q.toLowerCase() === 'm');                      /* 手动覆盖：?v=m / ?v=d */
+  document.documentElement.className += mob ? ' is-mobile' : ' is-desktop';
+})();</script>
 </head><body>
 
 <div class="grain" aria-hidden="true"></div>
