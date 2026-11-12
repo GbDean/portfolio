@@ -487,6 +487,57 @@ body.awake .core h1{letter-spacing:.14em}
          padding:0;align-items:center !important;justify-content:center !important}
   .cicon{width:clamp(112px,30vw,132px) !important}
 }
+
+/* ===== 设备判定：手机（含横屏/微信内置）用手机版 ===== */
+html.is-mobile .panel{position:fixed;left:0;top:0;width:100vw;height:100svh;transform:none;border:0;border-radius:0;
+         box-shadow:none;display:flex;flex-direction:column}
+html.is-mobile .panel.on{transform:none}
+html.is-mobile .veil{backdrop-filter:blur(6px)}
+html.is-mobile .phead{padding:16px 18px 10px;align-items:flex-start}
+html.is-mobile .phead .eb{font-size:8.5px;letter-spacing:.26em}
+html.is-mobile .phead h2, html.is-mobile .phead h2.big, html.is-mobile .panel>h2{font-size:clamp(23px,6.2vw,27px) !important;line-height:1.22 !important;letter-spacing:0 !important}
+html.is-mobile .phead p{font-size:11px;line-height:1.6;margin-top:5px}
+html.is-mobile .phead .sub{font-size:10.5px;letter-spacing:.18em}
+html.is-mobile .close{width:42px;height:42px;font-size:15px}
+html.is-mobile .pbody{padding:12px 18px 22px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+html.is-mobile .stage .core{position:absolute !important;left:50% !important;top:50% !important;
+    transform:translate(-50%,-50%) !important;width:92% !important;margin:0 !important;text-align:center}
+html.is-mobile #name{font-size:clamp(34px,10.5vw,48px) !important;letter-spacing:.06em !important;line-height:1.06 !important}
+html.is-mobile .core .hint{display:none !important}
+html.is-mobile .node{position:absolute !important;width:88px !important;height:54px !important;
+    display:flex !important;flex-direction:column;align-items:center;justify-content:center;
+    padding:0 !important;border:0 !important;opacity:1 !important;transform:none !important;margin:0 !important}
+html.is-mobile .node .idx{display:block !important;font-size:8px !important;letter-spacing:.2em;margin:0 0 3px !important}
+html.is-mobile .node .k{font-size:13px !important;letter-spacing:.14em !important;white-space:nowrap !important}
+html.is-mobile .node .v{display:none !important}
+html.is-mobile .node.n1{left:calc(50% - 44px) !important;top:31% !important;right:auto !important;bottom:auto !important}
+html.is-mobile .node.n4{left:calc(50% - 44px) !important;top:auto !important;bottom:31% !important;right:auto !important}
+html.is-mobile .node.n2{left:auto !important;right:8px !important;top:calc(50% - 27px) !important;bottom:auto !important}
+html.is-mobile .node.n3{left:8px !important;right:auto !important;top:calc(50% - 27px) !important;bottom:auto !important}
+html.is-mobile .stage .ten{opacity:.055 !important}
+html.is-mobile body.open .stage{opacity:0 !important;pointer-events:none !important;transition:opacity .25s}
+html.is-mobile body.open .node{opacity:0 !important;pointer-events:none !important}
+html.is-mobile .cat{width:84% !important;min-height:0;padding:12px 15px !important;animation:none;overflow:visible}
+html.is-mobile .cat h3{font-size:18px !important;margin:5px 0 3px !important;line-height:1.25}
+html.is-mobile .cat p{font-size:10.5px !important;line-height:1.5 !important}
+html.is-mobile .cat .thumbs{display:flex !important;margin-top:8px !important;gap:6px !important}
+html.is-mobile .cat .thumbs img{width:64px !important;height:38px !important;object-fit:cover}
+html.is-mobile .cat .go{display:none !important}
+html.is-mobile .fcard{grid-template-columns:1fr;gap:9px;padding:15px 0}
+html.is-mobile .fcard .shot{width:100%}
+html.is-mobile .fcard.hero{grid-template-columns:1fr !important}
+html.is-mobile .ttl .name{font-size:16px}
+html.is-mobile .ttl .spec, html.is-mobile .duty{font-size:10.5px;line-height:1.55}
+html.is-mobile .flow .fc{position:static !important;transform:none !important;opacity:1 !important;
+            filter:none !important;width:100% !important;height:auto !important;
+            margin:0 0 16px !important;display:block !important;left:auto !important;top:auto !important}
+html.is-mobile .flow .fc img{width:100% !important;height:auto !important;max-width:100% !important;border-radius:2px}
+html.is-mobile .flow .fc .cap{opacity:1 !important;position:static !important;transform:none !important;
+                 white-space:normal !important;text-align:left !important;
+                 margin:7px 0 0 !important;font-size:10.5px !important;line-height:1.5 !important}
+html.is-mobile .icons{flex-direction:column !important;flex-wrap:nowrap !important;gap:56px !important;
+         padding:0;align-items:center !important;justify-content:center !important}
+html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵怡鹏的作品集">
@@ -498,6 +549,11 @@ body.awake .core h1{letter-spacing:.14em}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="赵怡鹏的作品集">
 <meta name="twitter:image" content="https://gbdean.github.io/portfolio/og.jpg">
+<script>/* 设备判定：手机（含横屏、微信内置浏览器）走手机版布局 */
+(function(){var ua=navigator.userAgent||'',t=(navigator.maxTouchPoints||0)>1,
+sw=Math.min(screen.width,screen.height),
+mob=/iPhone|iPod|Android|Windows Phone|MicroMessenger|HarmonyOS/i.test(ua)||(t&&sw<=820);
+document.documentElement.className+=(mob?' is-mobile':' is-desktop');})();</script>
 </head><body>
 
 <div class="grain" aria-hidden="true"></div>
