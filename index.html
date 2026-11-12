@@ -428,12 +428,21 @@ body.awake .core h1{letter-spacing:.14em}
   .phead .sub{font-size:10.5px;letter-spacing:.18em}
   .close{width:42px;height:42px;font-size:15px}
   .pbody{padding:12px 18px 22px;overflow-y:auto;-webkit-overflow-scrolling:touch}
-  .cats{height:auto;grid-template-columns:1fr;gap:8px;padding-top:2px;align-content:start;overflow:visible}
+  .cats{height:100% !important;grid-template-columns:1fr;gap:10px;align-content:center !important;
+        overflow:visible;justify-items:center}
+  .cat{width:86% !important;min-height:0;display:grid !important;grid-template-columns:44px 1fr;
+       align-items:center;column-gap:12px;padding:11px 15px !important}
+  .cat .cn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(200,160,85,.5);
+           display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:.05em}
+  .cat h3{grid-column:2;font-size:17px !important;margin:0 0 2px !important;align-self:end}
+  .cat p{grid-column:2;font-size:10px !important;line-height:1.45 !important;align-self:start;margin:0}
+  .cat .thumbs{display:none !important}
+  .cat .go{display:none !important}
   .cat{min-height:0;padding:10px 14px;animation:none;overflow:visible}
   .cat h3{font-size:18px;margin:5px 0 3px;line-height:1.25}
   .cat p{font-size:10.5px;line-height:1.5}
   .cat .thumbs{margin-top:8px;gap:6px}
-  .cat .thumbs img{width:66px;height:39px}
+  .cat .thumbs img{width:66px;height:39px;object-fit:contain;background:#0A0A0C}
   .cat .go{opacity:1;transform:none;bottom:10px;right:14px}
   .films{height:auto;overflow:visible;padding-top:4px}
   .fcard{grid-template-columns:1fr;gap:9px;padding:15px 0}
@@ -452,28 +461,27 @@ body.awake .core h1{letter-spacing:.14em}
                  white-space:normal !important;text-align:left !important;
                  margin:7px 0 0 !important;font-size:10.5px !important;line-height:1.5 !important}
   /* 联系：电话/邮箱改上下排 */
-  .icons{flex-direction:column !important;flex-wrap:nowrap !important;gap:62px !important;
-         padding:26px 0 10px}
+  .icons{flex-direction:column !important;flex-wrap:nowrap !important;gap:56px !important;
+         padding:0;align-items:center !important;justify-content:center !important}
   .cicon{width:clamp(112px,30vw,132px) !important}
-  /* 首页（手机）：名字居中 + 四个入口竖排成菜单 */
-  .stage{display:flex !important;flex-direction:column !important;justify-content:center !important;
-    padding:48px 22px 56px !important;overflow-y:auto}
-  .stage .core{position:static !important;transform:none !important;margin:0 0 26px !important;text-align:center;width:100%}
-  #name{font-size:clamp(48px,14vw,66px) !important;letter-spacing:.1em !important;line-height:1.05 !important}
+  /* 首页（手机）：保持四方位——上/下/左/右，与桌面同构 */
+  .stage{padding:0 !important;height:100svh !important;display:block !important}
+  .stage .core{position:absolute !important;left:50% !important;top:50% !important;
+    transform:translate(-50%,-50%) !important;width:92% !important;margin:0 !important;text-align:center}
+  #name{font-size:clamp(30px,9.4vw,44px) !important;letter-spacing:.06em !important;line-height:1.06 !important}
   .core .hint{display:none !important}
-  .node.n1,.node.n2,.node.n3,.node.n4{position:static !important;transform:none !important;
-    left:auto !important;right:auto !important;top:auto !important;bottom:auto !important;
-    display:flex !important;align-items:baseline !important;gap:10px !important;
-    width:100% !important;text-align:left !important;padding:13px 2px !important;
-    border-bottom:1px solid rgba(200,160,85,.16) !important}
-  .node .k{font-size:19px !important}
-  .node .idx{font-size:9.5px !important;min-width:22px}
+  .node{position:absolute !important;width:auto !important;display:block !important;text-align:center !important;
+    padding:7px 4px !important;border:0 !important;opacity:1 !important;transform:none !important}
+  .node .idx{display:block !important;font-size:8px !important;letter-spacing:.2em;margin:0 0 3px !important}
+  .node .k{font-size:13px !important;letter-spacing:.14em !important;white-space:nowrap !important}
   .node .v{display:none !important}
-  .node{opacity:1 !important}
-  .node.n1{order:1} .node.n2{order:2} .node.n4{order:3} .node.n3{order:4}
-  .stage .ten{opacity:.06 !important}
+  .node.n1{left:50% !important;top:13% !important;transform:translateX(-50%) !important}
+  .node.n4{left:50% !important;top:auto !important;bottom:13% !important;transform:translateX(-50%) !important}
+  .node.n2{right:2% !important;left:auto !important;top:50% !important;bottom:auto !important;transform:translateY(-50%) !important}
+  .node.n3{left:2% !important;right:auto !important;top:50% !important;bottom:auto !important;transform:translateY(-50%) !important}
+  .stage .ten{opacity:.055 !important}
   .irow{gap:8px}
-  .ccenter{gap:26px;padding-bottom:0}
+  .ccenter{justify-content:center !important;gap:26px;padding-bottom:0}
 }
 </style>
 <meta property="og:type" content="website">
