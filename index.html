@@ -559,7 +559,10 @@ html.is-mobile .cicon{width:clamp(112px,30vw,132px) !important}
 body.open .core h1{animation-play-state:paused}
 
 /* 手机端：名字下的横线不要拉过两侧按钮 */
-html.is-mobile .core h1:after{width:104px !important;margin-left:auto !important;margin-right:auto !important}
+html.is-mobile .core h1:after{width:96px !important;margin:14px auto 0 !important;opacity:.8 !important}
+/* 左右两个入口的横线取消，否则和名字下面那条同一高度，看成一条长线 */
+html.is-mobile .node.n2:before,html.is-mobile .node.n3:before{display:none !important}
+html.is-mobile .node.n1:before,html.is-mobile .node.n4:before{width:44px !important;left:22px !important;opacity:.55 !important}
 </style>
 <meta property="og:type" content="website">
 <meta property="og:title" content="赵怡鹏的作品集">
